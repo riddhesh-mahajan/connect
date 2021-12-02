@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route, HashRouter } from "react-router-dom";
-import Home from './Home';
+import Home from './home/Home';
 
 
 export default function App() {
