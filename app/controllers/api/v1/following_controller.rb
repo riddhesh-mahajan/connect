@@ -1,6 +1,9 @@
 class Api::V1::FollowingController < ActionController::API
   def following
-    render json: User.find(1).followings, status: :ok
+    @myFollowingIds = User.find(1).followings.pluck('followed_user_id')
+    @myFollowing = User.where(id: @myFollowingIds)
+
+    render json: @myFollowing, status: :ok
   end
 
   def create
@@ -8,7 +11,7 @@ class Api::V1::FollowingController < ActionController::API
     @following.user_id = 1
 
     if @following.save
-        render json: @following, status: :created
+        render json: @following.followed_user, status: :created
     else
         render json: @following.errors, status: :unprocessable_entity
     end

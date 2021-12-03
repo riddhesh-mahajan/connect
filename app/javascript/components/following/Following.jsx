@@ -63,7 +63,7 @@ export default function Following() {
     return (
         <>
         <div className="d-flex mt-2 mb-2">
-            <input ref={userNameRef} type="text" placeholder="Whats on your mind ?" className="form-control flex-fill me-2" onChange={searchUsers}/>
+            <input ref={userNameRef} type="text" placeholder="Username" className="form-control flex-fill" onChange={searchUsers}/>
         </div>
         
         {(() => {
@@ -88,7 +88,7 @@ export default function Following() {
             followings.map((result, index)=>{
                 return (
                     <div key={uuidv4()} className="border p-2 mb-2">
-                        <p className="m-0">{result.followed_user_id}</p>
+                        <p className="m-0">{result.first_name}</p>
                     </div>
                 )
             })
