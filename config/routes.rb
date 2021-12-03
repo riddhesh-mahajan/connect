@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       post '/user/create', to: 'user#create'
 
       get '/feed', to: 'feed#feed'
+
+      post '/post', to: 'post#create'
     end
   end
 end

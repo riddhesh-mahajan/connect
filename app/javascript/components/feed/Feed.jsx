@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import axios from 'axios';
 import { FaThumbsUp } from 'react-icons/fa';
 import { v4 as uuidv4 } from 'uuid';
@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 export default function Feed() {
     const [posts, setPosts] = useState([])
+    const postContentRef = useRef()
 
     useEffect(() => {
         const data = null
@@ -20,8 +21,30 @@ export default function Feed() {
         });
     }, [])
 
+    function post(){
+        const postContent = postContentRef.current.value;
+
+        const data = {
+            content: postContent
+        }
+
+        axios.post('api/v1/post', data)
+        .then((response) => {
+            if(response.status == 201) {
+                setPosts([response.data, ...posts])
+            };
+        }).catch(function (error) {
+            console.log(error.response.data)
+        });
+    }
+
     return (
         <>
+        <div className="d-flex mt-2 mb-2">
+            <input type="text" ref={postContentRef} placeholder="Whats on your mind ?" className="form-control flex-fill me-2" />
+            <button className="btn btn-primary" onClick={post}>Post</button>
+        </div>
+
         {
             posts.map((post, index)=>{
                 return (
