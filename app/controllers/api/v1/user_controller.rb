@@ -1,27 +1,31 @@
 class Api::V1::UserController < ActionController::API
-  def create
-      @user = User.new(user_params)
+    def create
+        @user = User.new(user_params)
 
-      if @user.save
-          render json: @user, status: :created
-      else
-          render json: @user.errors, status: :unprocessable_entity
-      end
-  end
+        if @user.save
+            render json: @user, status: :created
+        else
+            render json: @user.errors, status: :unprocessable_entity
+        end
+    end
 
-  def login
-      @matchedUser = User.find_by(email: params['email'], password: params['password'])
+    def search
+        render json: User.where('first_name LIKE ?', "%#{params['username']}%"), status: :ok
+    end
 
-      if @matchedUser
-          render json: @matchedUser, status: :ok
-      else
-          render json: {}, status: :forbidden
-      end
-  end
+    def login
+        @matchedUser = User.find_by(email: params['email'], password: params['password'])
 
-  private
-  def user_params
-      params.permit(:first_name, :last_name, :email, :password)
-      end
+        if @matchedUser
+            render json: @matchedUser, status: :ok
+        else
+            render json: {}, status: :forbidden
+        end
+    end
+
+    private
+    def user_params
+        params.permit(:first_name, :last_name, :email, :password)
+        end
 
 end

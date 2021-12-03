@@ -11,7 +11,7 @@ export default function Feed() {
     useEffect(() => {
         const data = null
 
-        axios.get('api/v1/feed', data)
+        axios.get('api/v1/feed', { params: data })
         .then((response) => {
             if(response.status == 200) {
                 setPosts(response.data)
