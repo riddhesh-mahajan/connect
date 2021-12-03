@@ -10,7 +10,11 @@ class Api::V1::UserController < ActionController::API
     end
 
     def search
-        render json: User.where('first_name LIKE ?', "%#{params['username']}%"), status: :ok
+        if params['username'].length == 0
+            render json: [], status: :ok
+        else
+            render json: User.where('first_name LIKE ?', "%#{params['username']}%"), status: :ok
+        end
     end
 
     def login
