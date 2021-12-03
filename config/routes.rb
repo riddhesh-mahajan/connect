@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
       get '/feed', to: 'feed#feed'
 
+      get '/following', to: 'following#following'
+      post '/following', to: 'following#create'
+
+
       post '/post', to: 'post#create'
 
       
