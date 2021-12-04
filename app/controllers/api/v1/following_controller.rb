@@ -17,6 +17,16 @@ class Api::V1::FollowingController < ActionController::API
     end
   end
 
+  def destroy
+    @following = Following.find_by(user_id: 1, followed_user_id: params['id'])
+    
+    if @following.destroy
+        render json: {}, status: :ok
+    else
+        render json: @following.errors, status: :unprocessable_entity
+    end
+  end
+
   private
   def following_params
       params.permit(:followed_user_id)

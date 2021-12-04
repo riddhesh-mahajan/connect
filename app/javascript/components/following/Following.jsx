@@ -60,6 +60,28 @@ export default function Following() {
         });
     }
 
+    function unfollow(id, index){
+        const data = {
+            id: id
+        }
+
+        axios.delete('api/v1/following', { params: data })
+        .then((response) => {
+            if(response.status == 200) {
+                setFollowings(prevFollowing=>{
+                    var pc = [...prevFollowing]
+                    console.log(pc)
+
+                    pc.splice(index, 1);
+                    console.log(pc)
+                    return pc
+                })
+            };
+        }).catch(function (error) {
+            console.log(error.response.data)
+        });
+    }
+
     return (
         <>
         <div className="d-flex mt-2 mb-2">
@@ -87,8 +109,15 @@ export default function Following() {
         {
             followings.map((result, index)=>{
                 return (
-                    <div key={uuidv4()} className="border p-2 mb-2">
-                        <p className="m-0">{result.first_name}</p>
+                    <div key={uuidv4()} className="border p-2 mb-2 d-flex align-items-center">
+                        <div className="d-flex align-items-center me-auto">
+                            <div className="d-flex align-items-center justify-content-center me-2 fw-bold text-light" style={{backgroundColor: result.default_pp_color, borderRadius: '100px', minHeight: '32px', minWidth: '32px'}}>
+                                {result.first_name[0]}
+                            </div>
+                            <p className="m-0">{result.first_name}</p>
+                        </div>
+
+                        <button className="btn btn-primary" onClick={()=>{unfollow(result.id, index)}}>Unfollow</button>
                     </div>
                 )
             })

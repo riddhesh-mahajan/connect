@@ -11,11 +11,9 @@ Rails.application.routes.draw do
 
       get '/following', to: 'following#following'
       post '/following', to: 'following#create'
-
+      delete '/following', to: 'following#destroy'
 
       post '/post', to: 'post#create'
-
-      
     end
   end
 end
