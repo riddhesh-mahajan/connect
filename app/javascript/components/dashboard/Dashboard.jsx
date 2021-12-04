@@ -34,7 +34,7 @@ export default function Dashboard() {
             </div>
         </nav>
 
-        <div className="container col-6 p-0">
+        <div className="container col-6 p-0 pb-5">
             <div className="row m-0" style={{cursor: 'pointer'}}>
                 <div className="col-6 text-center border p-2 bg-primary" onClick={openFeed}>
                     <p className="m-0 text-light fw-bold">Feed</p>
