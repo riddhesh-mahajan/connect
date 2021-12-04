@@ -1,10 +1,11 @@
 class Api::V1::FeedController < ApplicationController
   def feed
-    # User.find_by(id: 1).posts.create(
-    #   content: 'We are good',
-    #   likes: 10,
-    # ).save
+    @myFollowings = User.find(1).followings.pluck('followed_user_id')
+    @myFollowings.push(1)
+    
+    @feed = Post.where(user_id: @myFollowings)
+    
 
-    render json: Post.all, status: :ok
+    render json: @feed, status: :ok
   end
 end
