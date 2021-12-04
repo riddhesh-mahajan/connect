@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       delete '/following', to: 'following#destroy'
 
       post '/post', to: 'post#create'
+      post '/post/like', to: 'post#like'
     end
   end
 end

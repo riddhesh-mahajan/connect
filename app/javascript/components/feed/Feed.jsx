@@ -39,6 +39,25 @@ export default function Feed() {
         });
     }
 
+    function like(postId, index){
+        const data = {
+            post_id: postId
+        }
+
+        axios.post('api/v1/post/like', data)
+        .then((response) => {
+            if(response.status == 200) {
+                setPosts(prevPosts=>{
+                    const tempPosts = [...prevPosts]
+                    tempPosts[index] = response.data
+                    return tempPosts
+                })
+            };
+        }).catch(function (error) {
+            console.log(error.response.data)
+        });
+    }
+
     function formatDatetime(newDate, separator='-'){   
         let date = newDate.getDate();
         let month = newDate.getMonth() + 1;
@@ -74,7 +93,7 @@ export default function Feed() {
                         
                         <div className="ms-2 mt-3">
                             <p className="m-0">{post.content}</p>
-                            <div className="d-flex mt-3">
+                            <div className="d-flex mt-3" onClick={()=>{like(post.id, index)}} style={{cursor: 'pointer'}}>
                                 <FaThumbsUp color={post.likes>0?'#42A5F5':'grey'} className="me-2 mt-1"/>
                                 <p className="m-0 text-secondary">{post.likes}</p>
                             </div>

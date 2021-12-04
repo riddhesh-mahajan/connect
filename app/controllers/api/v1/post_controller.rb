@@ -10,6 +10,16 @@ class Api::V1::PostController < ActionController::API
     end
   end
 
+  def like
+    @post = Post.find(params['post_id'])
+    @post.likes = @post.likes + 1
+
+    if @post.save
+        render json: @post, status: :ok
+    else
+        render json: @post.errors, status: :unprocessable_entity
+    end
+  end
   
   private
   def post_params
