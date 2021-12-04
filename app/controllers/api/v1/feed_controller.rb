@@ -1,4 +1,4 @@
-class Api::V1::FeedController < ActionController::API
+class Api::V1::FeedController < ApplicationController
   def feed
     # User.find_by(id: 1).posts.create(
     #   content: 'We are good',

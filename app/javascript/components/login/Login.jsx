@@ -22,7 +22,7 @@ export default function Login() {
 
             if(response.status == 200){
                 localStorage.setItem("user_id", response.data.id);
-                navigate('/dashboard')
+                navigate('/dashboard/feed')
             }
         }).catch(function (error) {
             const tempErrorMessages = [];

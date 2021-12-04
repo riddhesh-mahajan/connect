@@ -1,7 +1,10 @@
 class Api::V1::UserController < ActionController::API
     def create
-        @user = User.new(user_params)
+        @default_pp_colors = ['#9C27B0', '#2196F3', '#009688', '#FFEB3B']
 
+        @user = User.new(user_params)
+        @user.default_pp_color = @default_pp_colors.sample
+        
         if @user.save
             render json: @user, status: :created
         else
