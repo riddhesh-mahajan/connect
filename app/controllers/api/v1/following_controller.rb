@@ -7,13 +7,17 @@ class Api::V1::FollowingController < ActionController::API
   end
 
   def create
-    @following = Following.new(following_params)
-    @following.user_id = 1
+    if Following.find_by(user_id: 1, followed_user_id:params['followed_user_id']) == nil
+      @following = Following.new(following_params)
+      @following.user_id = 1
 
-    if @following.save
-        render json: @following.followed_user, status: :created
+      if @following.save
+          render json: @following.followed_user, status: :created
+      else
+          render json: @following.errors, status: :unprocessable_entity
+      end
     else
-        render json: @following.errors, status: :unprocessable_entity
+      render json: nil, status: :unprocessable_entity
     end
   end
 

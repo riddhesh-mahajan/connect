@@ -38,9 +38,11 @@ export default function Following() {
                     return [response.data, ...prevFollowings]
                 })
                 console.log(followings)
+                setSearchResults([])
             };
         }).catch(function (error) {
-            console.log(error.response.data)
+            setSearchResults([])
+            userNameRef.current.value = ''
         });
     }
 
