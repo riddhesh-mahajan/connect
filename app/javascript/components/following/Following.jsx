@@ -93,12 +93,15 @@ export default function Following() {
         {(() => {
             if (searchResults.length > 0) {
             return (
-                <div className="shadow bg-white border col-6 p-2" style={{zIndex: 2, position: 'absolute'}}>
+                <div className="hover shadow bg-white col-6" style={{zIndex: 2, position: 'absolute'}}>
                 {
                     searchResults.map((result, index)=>{
                         return (
-                            <div onClick={()=>{followUser(result.id)}} key={uuidv4()} className="border p-2 mb-2">
-                                <p className="m-0">{result.first_name}</p>
+                            <div onClick={()=>{followUser(result.id)}} key={uuidv4()} className="border p-2 d-flex align-items-center" style={{cursor: 'pointer'}}>
+                                    <div className="d-flex align-items-center justify-content-center me-2 fw-bold text-light" style={{backgroundColor: result.default_pp_color, borderRadius: '100px', minHeight: '32px', minWidth: '32px'}}>
+                                        {result.first_name[0]}
+                                    </div>
+                                    <p className="m-0">{result.first_name}</p>
                             </div>
                         )
                     })
