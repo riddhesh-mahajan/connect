@@ -28,7 +28,7 @@ export default function Home() {
             </nav>
 
             <div style={{minHeight: '80vh'}} className="row">
-                <div className="col-6 d-flex flex-column align-items-center justify-content-center">
+                <div className="col-md-6 col-12 d-flex flex-column align-items-center justify-content-center">
                     <div className="col-9">
                         <p className="display-2 fw-bold">Connect with everyone</p>
                         <p>Share your thoughts and follow your friends to create the feed</p>
@@ -36,7 +36,7 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div className="col-6">
+                <div className="col-6 d-none d-md-block">
                     <img src="https://riddhesh-mahajan-dev.s3.eu-west-3.amazonaws.com/illustrations/undraw_grades_re_j7d6.svg" alt="" className="col-10 mt-5" />
                 </div>
             </div>
