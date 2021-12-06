@@ -1,6 +1,9 @@
-class Api::V1::PostController < ActionController::API
+class Api::V1::PostController < ApplicationController
+  skip_before_action :verify_authenticity_token
+  before_action :login_required
+
   def create
-    @post = User.find_by(id: 1).posts.new(post_params)
+    @post = User.find_by(id: $userData["id"]).posts.new(post_params)
     @post.likes = 0
 
     if @post.save

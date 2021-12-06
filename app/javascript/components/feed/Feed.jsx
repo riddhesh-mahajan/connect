@@ -11,6 +11,7 @@ export default function Feed() {
     useEffect(() => {
         const data = null
 
+        axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwt','');
         axios.get('api/v1/feed', { params: data })
         .then((response) => {
             if(response.status == 200) {
@@ -24,7 +25,7 @@ export default function Feed() {
 
     function post(){
         const postContent = postContentRef.current.value;
-
+        axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwt','');
         const data = {
             content: postContent
         }
@@ -43,7 +44,7 @@ export default function Feed() {
         const data = {
             post_id: postId
         }
-
+        axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwt','');
         axios.post('api/v1/post/like', data)
         .then((response) => {
             if(response.status == 200) {

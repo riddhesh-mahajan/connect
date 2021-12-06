@@ -1,15 +1,18 @@
-class Api::V1::FollowingController < ActionController::API
+class Api::V1::FollowingController < ApplicationController
+  skip_before_action :verify_authenticity_token
+  before_action :login_required
+
   def following
-    @myFollowingIds = User.find(1).followings.pluck('followed_user_id')
+    @myFollowingIds = User.find($userData["id"]).followings.pluck('followed_user_id')
     @myFollowing = User.where(id: @myFollowingIds)
 
     render json: @myFollowing, status: :ok
   end
 
   def create
-    if Following.find_by(user_id: 1, followed_user_id:params['followed_user_id']) == nil
+    if Following.find_by(user_id: $userData["id"], followed_user_id:params['followed_user_id']) == nil
       @following = Following.new(following_params)
-      @following.user_id = 1
+      @following.user_id = $userData["id"]
 
       if @following.save
           render json: @following.followed_user, status: :created
@@ -22,7 +25,7 @@ class Api::V1::FollowingController < ActionController::API
   end
 
   def destroy
-    @following = Following.find_by(user_id: 1, followed_user_id: params['id'])
+    @following = Following.find_by(user_id: $userData["id"], followed_user_id: params['id'])
     
     if @following.destroy
         render json: {}, status: :ok

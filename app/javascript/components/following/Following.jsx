@@ -14,7 +14,7 @@ export default function Following() {
 
     function loadFollowing(){
         const data = null
-
+        axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwt','');
         axios.get('api/v1/following', { params: data })
         .then((response) => {
             if(response.status == 200) {
@@ -29,6 +29,7 @@ export default function Following() {
         const data = {
             'followed_user_id': followed_user_id
         }
+        axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwt','');
 
         axios.post('api/v1/following',  data)
         .then((response) => {
@@ -48,6 +49,7 @@ export default function Following() {
 
     function searchUsers(){
         const username = userNameRef.current.value;
+        axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwt','');
         const data = {
             username: username
         }
@@ -66,7 +68,7 @@ export default function Following() {
         const data = {
             id: id
         }
-
+        axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwt','');
         axios.delete('api/v1/following', { params: data })
         .then((response) => {
             if(response.status == 200) {
