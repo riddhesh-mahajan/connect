@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Feed from '../feed/Feed';
 import Following from '../following/Following';
 import { Routes, Route, HashRouter } from "react-router-dom";
@@ -6,12 +6,15 @@ import { useNavigate, Link } from "react-router-dom";
 
 export default function Dashboard() {
     const navigate = useNavigate();
+    const [selectedTab, setSelectedTab] = useState('feed')
 
     function openFeed(){
+        setSelectedTab('feed')
         navigate('feed')
     }
 
     function openFollowing(){
+        setSelectedTab('following')
         navigate('following')
     }
 
@@ -35,13 +38,13 @@ export default function Dashboard() {
             </div>
         </nav>
 
-        <div className="container col-6 p-0 pb-5">
+        <div className="container col-11 col-md-6 p-0 pb-5">
             <div className="row m-0" style={{cursor: 'pointer'}}>
-                <div className="col-6 text-center border p-2 bg-primary" onClick={openFeed}>
-                    <p className="m-0 text-light fw-bold">Feed</p>
+                <div className={"col-6 text-center border p-2 " + (selectedTab == 'feed' ? 'bg-primary text-light' : 'bg-light text-dark')} onClick={openFeed}>
+                    <p className="m-0 fw-bold">Feed</p>
                 </div>
-                <div className="col-6 text-center border p-2 bg-primary" onClick={openFollowing}>
-                    <p className="m-0 text-light fw-bold">Following</p>
+                <div className={"col-6 text-center border p-2 " + (selectedTab == 'following' ? 'bg-primary text-light' : 'bg-light text-dark')} onClick={openFollowing}>
+                    <p className="m-0 fw-bold">Following</p>
                 </div>
             </div>
             

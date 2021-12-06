@@ -49,7 +49,7 @@ export default function Signup() {
 
     return (
         <div className="d-flex align-items-center flex-column" style={{minHeight: '100vh'}}>
-            <div className="col-4 mt-5">
+            <div className="col-12 col-md-3 mt-5 p-3">
                 <p className="display-5 text-center mb-4 fw-bold">Signup</p>
 
                 <input ref={firstNameRef} type="text" placeholder="First name" className="form-control mb-1" />
@@ -61,7 +61,6 @@ export default function Signup() {
                 <input ref={passwordRef} type="password" placeholder="Password" className="form-control mb-1"/>
                 <input ref={confirmPasswordRef} type="password" placeholder="Confirm password" className="form-control mb-1"/>
 
-                
                 {
                     errorMessages.map((error)=>{
                         return (<p key={uuidv4()} className="mb-1 text-danger">{error}</p>)

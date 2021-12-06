@@ -35,7 +35,7 @@ export default function Login() {
 
     return (
         <div className="d-flex align-items-center flex-column" style={{minHeight: '100vh'}}>
-            <div className="col-4 mt-5">
+            <div className="col-12 col-md-3 mt-5 p-3">
                 <p className="display-5 text-center mb-4 fw-bold">Login</p>
 
                 <input ref={emailRef} type="text" placeholder="Email" className="form-control mb-1" />
