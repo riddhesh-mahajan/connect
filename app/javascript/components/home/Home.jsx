@@ -1,12 +1,9 @@
 import React from 'react'
 import { useNavigate, Link } from "react-router-dom";
+import Navbar from '../navbar/Navbar';
 
 export default function Home() {
     const navigate = useNavigate();
-
-    function navigateToLogin(){
-        navigate('/login')
-    }
 
     function navigateToSignup(){
         navigate('/signup')
@@ -14,18 +11,7 @@ export default function Home() {
 
     return (
         <>
-            <nav className="navbar navbar-light bg-light">
-            <div className="container-fluid">
-                <a className="navbar-brand" href="#">
-                    <img src="https://riddhesh-mahajan-dev.s3.eu-west-3.amazonaws.com/illustrations/storo+icon.svg" alt="" width="30" height="24" className="d-inline-block align-text-top" />
-                    <span className="ms-2 fs-4 fw-bold">Connect</span>
-                </a>
-
-                <div className="d-flex">
-                <button className="btn btn-primary me-2" onClick={navigateToLogin}>Log in</button>
-                </div>
-            </div>
-            </nav>
+            <Navbar/>
 
             <div style={{minHeight: '80vh'}} className="row">
                 <div className="col-md-6 col-12 d-flex flex-column align-items-center justify-content-center">

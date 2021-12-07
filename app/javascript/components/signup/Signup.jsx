@@ -2,7 +2,7 @@ import React, {useRef, useState} from 'react'
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from "react-router-dom";
-
+import Navbar from '../navbar/Navbar';
 
 
 export default function Signup() {
@@ -14,6 +14,10 @@ export default function Signup() {
 
     const [errorMessages, setErrorMessages] = useState([])
     const navigate = useNavigate();
+
+    function navigateToLogin(){
+        navigate('/login')
+    }
 
     function signup(){
         const data = {
@@ -48,6 +52,9 @@ export default function Signup() {
     }
 
     return (
+        <>
+        <Navbar showLoginButton={false}/>
+
         <div className="d-flex align-items-center flex-column" style={{minHeight: '100vh'}}>
             <div className="col-12 col-md-3 mt-5 p-3">
                 <p className="display-5 text-center mb-4 fw-bold">Signup</p>
@@ -68,7 +75,10 @@ export default function Signup() {
                 }
                 
                 <button onClick={signup} className="btn btn-primary col-12 mt-3">Signup</button>
+                <p className="m-0 text-center mt-3">OR</p>
+                <button onClick={navigateToLogin} className="btn btn-primary col-12 mt-3">Login</button>
             </div>
         </div>
+        </>
     )
 }

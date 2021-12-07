@@ -2,12 +2,18 @@ import React, {useRef, useState} from 'react'
 import axios from 'axios';
 import { useNavigate, Link } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
+import Navbar from '../navbar/Navbar';
+
 
 export default function Login() {
     const emailRef = useRef('')
     const passwordRef = useRef('')
     const navigate = useNavigate();
     const [errorMessages, setErrorMessages] = useState([])
+
+    function navigateToSignup(){
+        navigate('/signup')
+    }
 
     function login(){
         const data = {
@@ -34,6 +40,9 @@ export default function Login() {
     }
 
     return (
+        <>
+        <Navbar showLoginButton={false}/>
+
         <div className="d-flex align-items-center flex-column" style={{minHeight: '100vh'}}>
             <div className="col-12 col-md-3 mt-5 p-3">
                 <p className="display-5 text-center mb-4 fw-bold">Login</p>
@@ -49,7 +58,10 @@ export default function Login() {
                 }
 
                 <button onClick={login} className="btn btn-primary col-12 mt-3">Login</button>
+                <p className="m-0 text-center mt-3">OR</p>
+                <button onClick={navigateToSignup} className="btn btn-primary col-12 mt-3">Signup</button>
             </div>
         </div>
+        </>
     )
 }
