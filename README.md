@@ -46,12 +46,25 @@ rails db:create
 rails db:setup
 ```
 
-##### 5. Create .env file
+##### 5. Setup credentails
+##### Delete folder **config\credentials**
 
-Create .env file in project's root directory and paste following text in it.
+##### Set editor to open credentials file
+```bash
+$env:EDITOR="code --wait"
+```
+
+
+##### Create and edit new credentials file
 
 ```bash
-JWT_SECRET='your jwt secret'
+rails credentials:edit --environment development
+```
+
+##### Paste your jwt secret 
+```bash
+jwt:
+  secret: dfrgs463hf77dyhe52
 ```
 
 ##### 6. Start the Rails server
@@ -64,7 +77,7 @@ rails s
 
 ##### 7. Open URL in web browser
 
-[http://127.0.0.1:3000](http://127.0.0.1:3000)
+[http://127.0.0.1:3000/#](http://127.0.0.1:3000/#)
 
 
 &emsp;
