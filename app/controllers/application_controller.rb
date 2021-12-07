@@ -13,6 +13,6 @@ class ApplicationController < ActionController::Base
     end
 
     def hmac_secret
-        return ENV["JWT_SECRET"]
+        return Rails.application.credentials.jwt[:secret]
     end
 end
