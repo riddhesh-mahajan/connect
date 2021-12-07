@@ -22,7 +22,7 @@ export default function Home() {
                 </a>
 
                 <div className="d-flex">
-                <button className="btn btn-primary me-4" onClick={navigateToLogin}>Log in</button>
+                <button className="btn btn-primary me-2" onClick={navigateToLogin}>Log in</button>
                 </div>
             </div>
             </nav>
