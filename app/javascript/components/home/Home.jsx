@@ -13,7 +13,7 @@ export default function Home() {
         <>
             <Navbar/>
 
-            <div style={{minHeight: '80vh'}} className="row">
+            <div style={{minHeight: '80vh'}} className="row m-0">
                 <div className="col-md-6 col-12 d-flex flex-column align-items-center justify-content-center">
                     <div className="col-9">
                         <p className="display-2 fw-bold">Connect with everyone</p>

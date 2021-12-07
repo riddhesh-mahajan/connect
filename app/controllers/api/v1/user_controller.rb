@@ -27,7 +27,10 @@ class Api::V1::UserController < ApplicationController
         @matchedUser = User.find_by(email: params['email'], password: params['password'])
 
         if @matchedUser
-            render json: JWT.encode(@matchedUser.to_json.delete("password"), hmac_secret(), 'HS256'), status: :ok
+            matchedUserJson = @matchedUser.to_json
+            matchedUserJson.delete("password")
+
+            render json: JWT.encode(matchedUserJson, hmac_secret(), 'HS256'), status: :ok
         else
             render json: {}, status: :forbidden
         end

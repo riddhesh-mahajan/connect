@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
     def login_required()
         begin
             token = request.headers["Authorization"]
-            puts("AAAAAAAAAAAAAAAAAA")
-            puts(token)
             decoded_array = JWT.decode(token, hmac_secret, true, { algorithm: 'HS256' })
             payload = decoded_array.first
             $userData = JSON.parse(payload)

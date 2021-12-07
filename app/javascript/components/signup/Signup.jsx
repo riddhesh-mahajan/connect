@@ -56,7 +56,7 @@ export default function Signup() {
         <Navbar showLoginButton={false}/>
 
         <div className="d-flex align-items-center flex-column" style={{minHeight: '100vh'}}>
-            <div className="col-12 col-md-3 mt-5 p-3">
+            <div className="col-12 col-md-3 mt-3 p-3">
                 <p className="display-5 text-center mb-4 fw-bold">Signup</p>
 
                 <input ref={firstNameRef} type="text" placeholder="First name" className="form-control mb-1" />
