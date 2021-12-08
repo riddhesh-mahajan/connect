@@ -1,6 +1,8 @@
 ![Connect](docs/images/banner.svg)
 
 # Connect
+[![Website](https://img.shields.io/website?logo=React&logoColor=%2361DAFB&style=for-the-badge&up_message=Live%20demo&url=https%3A%2F%2Fconnectriddhesh.herokuapp.com%2F%23)](https://connectriddhesh.herokuapp.com/) &nbsp; ![GitHub repo size](https://img.shields.io/github/repo-size/riddhesh-mahajan/connect?style=for-the-badge) 
+
 
 Social network built using Ruby on Rails, React and Bootstrap.
 
