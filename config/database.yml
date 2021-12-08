@@ -85,6 +85,7 @@ test:
 #
 production:
   <<: *default
-  database: connect_production
-  username: connect
+  database: <%= ENV['CONNECT_DATABASE_NAME'] %>
+  username: <%= ENV['CONNECT_DATABASE_USERNAME'] %>
   password: <%= ENV['CONNECT_DATABASE_PASSWORD'] %>
+  host: <%= ENV['CONNECT_DATABASE_HOST'] %>
